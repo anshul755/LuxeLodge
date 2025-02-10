@@ -8,8 +8,11 @@ const listSchema=new Schema({
     },
     description:String,
     image:{
-        type:String,
-        set:(v)=> v==="" ? "https://images.unsplash.com/photo-1738924349706-14d70715e236?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2fHx8ZW58MHx8fHx8":v,
+        filename:{type:String,required:true},
+        url:{
+          type:String,
+          default:"https://images.unsplash.com/photo-1738924349706-14d70715e236?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2fHx8ZW58MHx8fHx8"
+        },
     },
     price:{
         type:Number,

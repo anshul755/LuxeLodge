@@ -5,7 +5,7 @@ const app=express();
 const mongoose=require('mongoose');
 const listing=require("./models/listing.js");
 
-const murl="mongodb://127.0.0.1:27017/test";
+const murl="mongodb://127.0.0.1:27017/LuxeLodge";
 
 main().then(()=>{
     console.log("Connected To MongoDB");
