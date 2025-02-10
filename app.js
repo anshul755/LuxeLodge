@@ -1,4 +1,5 @@
 const express=require('express');
+const path=require("path");
 
 const app=express();
 
@@ -17,22 +18,16 @@ async function main(){
     await mongoose.connect(murl);
 };
 
+app.set("view engine","ejs");
+app.set("views",path.join(__dirname,"views"))
+
 app.get("/",(req,res)=>{
     res.send("Hi, I am Root");
 });
 
-app.get("/testlisting", async (req,res)=>{
-    let samplelisting=new listing({
-        title:"My New Villa",
-        description:"By The Beach",
-        price:1200,
-        location:"Calangute, Goa",
-        country:"India",
-    });
-
-    await samplelisting.save();
-    console.log("sample was saved");
-    res.send("successful testing");
+app.get("/listing", async (req,res)=>{
+    const all_listing=await listing.find({});
+    res.render("listings/index.ejs",{all_listing});
 });
 
 app.listen(8080,()=>{
