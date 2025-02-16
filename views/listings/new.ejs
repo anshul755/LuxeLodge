@@ -1,19 +1,91 @@
 <%layout("/layout/boilerplate")%>
 <body>
-    <h3>Create a New Listing</h3>
-    <form action="/listings" method="post">
-        <input  name="listing[title]" placeholder="Enter Title" type="text">
+    <br>
+    <h3><i>Create a New Listing</i></h3>
+    <br>
+    <form action="/listings" method="post" class="needs-validation" novalidate>
+        <div>
+            <label for="title" class="form-label" id="validationCustom01">Title:</label>
+            <input  name="listing[title]" placeholder="Enter Title" type="text" class="form-control" id="validationCustom01" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please Fill The Title.
+              </div>
+        </div>
         <br>
-        <textarea  name="listing[description]" placeholder="Enter Description"></textarea>
+        <div>
+            <label for="description" class="form-label" id="validationCustom02">Description:</label><br>
+            <textarea  name="listing[description]" placeholder="Enter Description" class="form-control" id="validationCustom02" required></textarea>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please Fill The Description.
+              </div>
+        </div>
         <br>
-        <input  name="listing[image]" placeholder="Enter Image URL" type="text">
+        <div>
+            <label for="Image" class="form-label" id="validationCustom03">Image URL:</label>
+            <input  name="listing[image]" placeholder="Enter Image URL" type="text" class="form-control" id="validationCustom03" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please Paste The Url.
+              </div>
+        </div>
         <br>
-        <input  name="listing[price]" placeholder="Enter Price" type="number">
+        <div>
+            <label for="Price" class="form-label" id="validationCustom04">Price:</label>
+            <input  name="listing[price]" placeholder="Enter Price" type="number" class="form-control" id="validationCustom04" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please Enter The Price.
+              </div>
+        </div>
         <br>
-        <input  name="listing[country]" placeholder="Enter Country" type="text">
+        <div>
+            <label for="country" class="form-label" id="validationCustom05">Country:</label>
+            <input  name="listing[country]" placeholder="Enter Country" type="text" class="form-control" id="validationCustom05" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please Enter Your Country.
+              </div>
+        </div>
         <br>
-        <input  name="listing[location]" placeholder="Enter Location" type="text">
+        <div>
+            <label for="location" class="form-label" id="validationCustom06">Location:</label>
+            <input  name="listing[location]" placeholder="Enter Location" type="text" class="form-control" id="validationCustom06" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please Type The Location.
+              </div>
+        </div>
         <br>
-        <button>Add</button>
+        <button class="btn bcol"><b>Add</b></button>
     </form>
+    <script>(() => {
+        'use strict'
+        const forms = document.querySelectorAll('.needs-validation')
+      
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+      
+            form.classList.add('was-validated')
+          }, false)
+        })
+      })()
+      </script>
 </body>

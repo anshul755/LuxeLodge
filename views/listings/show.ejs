@@ -1,17 +1,30 @@
 <%layout("/layout/boilerplate")%>
 <body>
-    <h3>Listing Details</h3>
+    <br>
+    <h3><i>Listing Details</i></h3>
+    <div style="align-items: center;">
+    <div class="card">
+        <img src="<%=listings.image%>" class="card-img-top" alt="listing_Img" style="height: 40rem; width: 10rem;">
+                <div class="card-body">
+                    <div class="card-text">
+                      <p><b><%= listings.title %></b></p>
+                    </div>
+                </div>
+            </div>
+    </div>
     <ul>
-        <li><%= listings.title %></li>
         <li><%= listings.description %></li>
         <li>&#8377; <%= listings.price.toLocaleString("en-IN") %></li>
         <li><%= listings.location %></li>
         <li><%= listings.country %></li>
-    </ul>
+    </ul><br>
 
-    <a href="/listings/<%=listings.id%>/edit">Edit This Listing</a>
-    <br><br>
-    <form action="/listings/<%=listings._id%>?_method=delete" method="post">
-        <button>Delete this listing</button>
+    <div class="btns">
+        <a href="/listings/<%=listings.id%>/edit" style="text-decoration: none;" class="btn bcol"><b>Edit</b></a>&nbsp;&nbsp;
+        <form action="/listings/<%=listings._id%>?_method=delete" method="post">
+            <button class="btn bcol"><b>Delete</b></button>
+    </div>
+    
     </form>
+</div>
 </body>

@@ -1,5 +1,12 @@
 body{
     background-color: white !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container{
+    flex: 1;
 }
 
 .navbar{
@@ -27,6 +34,10 @@ body{
 .f-info-links a{
     text-decoration: none;
     color: darkgoldenrod;
+}
+
+.socialslogo:hover{
+    color: white;
 }
 
 .f-info-links a:hover{
@@ -63,22 +74,15 @@ body{
     padding: 0 !important;
 }
 
-.navbar-toggler{
-    background-color: goldenrod !important;
-}
-
 @media (max-width:991px){
     .container-fluid{
         background-color: #222222 !important;
         color: darkgoldenrod;
     }
-}
-
-.wrapper {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    .navbar-toggler{
+        background-color: goldenrod !important;
+        margin-left: auto;
+    }
 }
 
 .listing-link{
@@ -92,4 +96,22 @@ body{
 .card-img-overlay:hover{
     opacity: 0.15;
     background-color: goldenrod;
+}
+
+.bcol{
+    color: darkgoldenrod !important;
+    background-color: #222222 !important;
+}
+
+.bcol:hover{
+    background-color: darkgoldenrod;
+    opacity: 0.9;
+}
+
+.showImg{
+    height: 30vh;
+}
+
+.btns{
+    display: flex;
 }
