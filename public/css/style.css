@@ -1,0 +1,95 @@
+body{
+    background-color: white !important;
+}
+
+.navbar{
+    background-color: #222222 !important;
+    height: 5rem;
+}
+
+.nav-link{
+    color: goldenrod !important;
+    height: 2rem;
+}
+
+.f-info-links,.f-info-socials,.f-info-brand{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.f-info-links a{
+    text-decoration: none;
+    color: darkgoldenrod;
+}
+
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+
+.f-info{
+    color: darkgoldenrod;
+    height: 8rem;
+    background-color: #222222;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+    text-align: center;
+}
+
+.border-bottom{
+    border-color: darkgoldenrod !important;
+}
+
+.card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;   
+}
+
+.card-body{
+    padding: 0 !important;
+}
+
+.navbar-toggler{
+    background-color: goldenrod !important;
+}
+
+@media (max-width:991px){
+    .container-fluid{
+        background-color: #222222 !important;
+        color: darkgoldenrod;
+    }
+}
+
+.wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.listing-link{
+    text-decoration: none;
+}
+
+.card-img-overlay{
+    opacity: 0;
+}
+
+.card-img-overlay:hover{
+    opacity: 0.15;
+    background-color: goldenrod;
+}

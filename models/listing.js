@@ -8,7 +8,7 @@ const listSchema=new Schema({
     },
     description:String,
     image:{
-        filename:{type:String,required:true},
+        filename:{type:String},
         url:{
           type:String,
           default:"https://images.unsplash.com/photo-1738924349706-14d70715e236?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2fHx8ZW58MHx8fHx8"
@@ -28,4 +28,3 @@ const listSchema=new Schema({
 const listing=mongoose.model("listing",listSchema);
 
 module.exports=listing;
-
