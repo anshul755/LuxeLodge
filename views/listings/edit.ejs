@@ -1,37 +1,91 @@
 <%layout("/layout/boilerplate")%>
-<body><br>
+<body>
+    <br>
     <h3><i>Edit your listing</i></h3>
-    <form action="/listings/<%=listings._id%>?_method=put" method="post" class="form-control">
+    <form action="/listings/<%=listings._id%>?_method=put" method="post" class="needs-validation" novalidate>
         <div>
-            <label for="title" class="form-label fb">Title:</label>
-            <input  name="listing[title]" value="<%=listings.title%>" type="text" class="form-control">
+            <label for="title" class="form-label" id="validationCustom01">Title:</label>
+            <input  name="listing[title]" placeholder="Enter Title" type="text" class="form-control" id="validationCustom01" value="<%=listings.title%>" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please Fill The Title.
+              </div>
         </div>
         <br>
         <div>
-            <label for="description" class="form-label">Description:</label><br>
-            <textarea  name="listing[description]" class="form-control"><%=listings.description%></textarea>
+            <label for="description" class="form-label" id="validationCustom02">Description:</label><br>
+            <textarea  name="listing[description]" placeholder="Enter Description" class="form-control" id="validationCustom02" required><%=listings.description%></textarea>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please Fill The Description.
+              </div>
         </div>
         <br>
         <div>
-            <label for="Image" class="form-label">URL:</label>
-            <input  name="listing[image]" value="<%=listings.image%>" class="form-control" type="text">
+            <label for="Image" class="form-label" id="validationCustom03">Image URL:</label>
+            <input  name="listing[image]" placeholder="Enter Image URL" type="text" class="form-control" id="validationCustom03" value="<%=listings.image%>" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please Paste The Url.
+              </div>
         </div>
         <br>
         <div>
-            <label for="Price" class="form-label">Price:</label>
-            <input  name="listing[price]" value="<%=listings.price%>" type="number" class="form-control">
+            <label for="Price" class="form-label" id="validationCustom04">Price:</label>
+            <input  name="listing[price]" placeholder="Enter Price" type="number" min="0" class="form-control" id="validationCustom04" value="<%=listings.price%>" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please Enter Valid Price.
+              </div>
         </div>
         <br>
         <div>
-            <label for="country" class="form-label">Country:</label>
-            <input  name="listing[country]" value="<%=listings.country%>" type="text" class="form-control">
+            <label for="country" class="form-label" id="validationCustom05">Country:</label>
+            <input  name="listing[country]" placeholder="Enter Country" type="text" class="form-control" id="validationCustom05" value="<%=listings.country%>" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please Enter Your Country.
+              </div>
         </div>
         <br>
         <div>
-            <label for="location" class="form-label">Location:</label>
-            <input  name="listing[location]" value="<%=listings.location%>" type="text" class="form-control">
+            <label for="location" class="form-label" id="validationCustom06">Location:</label>
+            <input  name="listing[location]" placeholder="Enter Location" type="text" class="form-control" id="validationCustom06" value="<%=listings.location%>" required>
+            <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                Please Enter The Location.
+              </div>
         </div>
         <br>
-        <button class="btn bcol"><b>Edit</b></button>
+        <button class="btn bcol"><b>Done</b></button>
     </form>
+    <script>
+        (() => {
+            'use strict'
+            const forms = document.querySelectorAll('.needs-validation')
+        
+            Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+        
+                form.classList.add('was-validated')
+            }, false)
+            })
+        })()
+      </script>
 </body>
