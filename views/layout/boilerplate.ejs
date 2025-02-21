@@ -19,9 +19,9 @@
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" href="#">Home</a>
-              <a class="nav-link" href="/listings">All Listings</a>
-              <a class="nav-link" href="/listings/new">Add New Listing</a>
+              <a class="nav-link active" href="#"><i>Home</i></a>
+              <a class="nav-link" href="/listings"><i>All Listings</i></a>
+              <a class="nav-link" href="/listings/new"><i>Add New Listing</i></a>
             </div>
           </div>
         </div>
@@ -37,7 +37,6 @@
         <i class="fa-brands fa-instagram socialslogo"></i>
         <i class="fa-brands fa-twitter socialslogo"></i>
         <i class="fa-brands fa-linkedin socialslogo"></i>
-
       </div>
       <div class="f-info-brand"> &copy;LuxeLodge Private Limited</div>
       <div class="f-info-links">
@@ -46,5 +45,25 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+      const text = "Welcome to LuxeLodge, Book Your Lodge Nowwwwww.....";
+      let index = 0;
+      
+      function typeWriterEffect() {
+          let element = document.getElementsByClassName("typewriter")[0];
+          if (index < text.length) {
+              element.innerHTML += text.charAt(index);
+              index++;
+              setTimeout(typeWriterEffect, 100);
+          }else {
+                setTimeout(() => {
+                    element.innerHTML = "";
+                    index = 0;
+                    typeWriterEffect();
+                }, 1500);
+            }
+      }
+      window.onload = typeWriterEffect;
+  </script>
   </body>
 </html>

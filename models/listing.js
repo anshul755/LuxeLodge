@@ -1,4 +1,5 @@
 const mongoose=require('mongoose');
+const { type } = require('os');
 const Schema=mongoose.Schema;
 
 const listSchema=new Schema({
@@ -19,6 +20,12 @@ const listSchema=new Schema({
         type:String,
     },
     country:String,
+    reviews:[
+        {
+            type:Schema.Types.ObjectId,
+            ref:"Review",
+        }
+    ]
 });
 
 const listing=mongoose.model("listing",listSchema);

@@ -1,16 +1,11 @@
 <%layout("/layout/boilerplate")%>
 <body>
     <br>
-    <h3><i>Listing Details</i></h3>
+    <h1><i><b><%= listings.title %></b></i></h1>
     <div style="align-items: center;">
-    <div class="card">
-        <img src="<%=listings.image%>" class="card-img-top" alt="listing_Img" style="height: 40rem; width: 10rem;">
-                <div class="card-body">
-                    <div class="card-text">
-                      <p><b><%= listings.title %></b></p>
-                    </div>
-                </div>
-            </div>
+        <div class="card">
+            <img src="<%=listings.image%>" class="card-img-top" alt="listing_Img" style="height: 40rem; width: 10rem;">
+        </div>
     </div>
     <ul>
         <li><%= listings.description %></li>
@@ -24,7 +19,48 @@
         <form action="/listings/<%=listings._id%>?_method=delete" method="post">
             <button class="btn bcol"><b>Delete</b></button>
     </div>
-    
     </form>
 </div>
+<br><br>
+<div>
+    <h4 style="text-align: center;"><i>Leave a Review</i></h4>
+    <form action="" class="form-control review">
+        <div><br>
+            <label for="rating" class="form-label">Rating</label>
+            <br><label id="rating-labels" style="color: darkgoldenrod; font-weight: bold; text-align: center;">
+              &nbsp;<span id="num1">1</span>&nbsp;&nbsp;&nbsp;&nbsp;
+              <span id="num2">2</span>&nbsp;&nbsp;&nbsp;&nbsp;
+              <span id="num3" class="active">3</span>&nbsp;&nbsp;&nbsp;&nbsp;
+              <span id="num4">4</span>&nbsp;&nbsp;&nbsp;&nbsp;
+              <span id="num5">5</span>
+            </label>
+            <input type="range" min="1" max="5" value="3" id="rating" name="Review[rating]" class="form-range" style=" width: 52.5%; appearance: none; height: 10px; border-radius: 10px; outline: none; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
+          </div>
+        <div>
+            <br>
+            <label for="comment" class="form-label">Comments</label>
+            <textarea name="Review[comment]" id="comment" cols="30" rows="5" class="form-control"></textarea>
+        </div>
+        <div><br>
+            <button class="btn btnforreview">Submit</button>
+        </div>
+        <br>
+    </form>
+</div>
+<script>
+    const slider = document.getElementById('rating');
+    const numbers = document.querySelectorAll('#rating-labels span');
+  
+    slider.addEventListener('input', function () {
+      numbers.forEach((num, index) => {
+        if (index + 1 === parseInt(slider.value)) {
+          num.style.color = '#FFD700';
+          num.style.transform = 'scale(1.3)';
+        } else {
+          num.style.color = 'darkgoldenrod';
+          num.style.transform = 'scale(1)';
+        }
+      });
+    });
+  </script>
 </body>

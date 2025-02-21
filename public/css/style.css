@@ -5,6 +5,22 @@ body{
     min-height: 100vh;
 }
 
+.typewriter {
+    font-size: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+}
+
+@keyframes blink {
+    50% { 
+        border-color: transparent; 
+    }
+}
+.typewriter {
+    animation: blink 0.7s infinite;
+}
+
 .container{
     flex: 1;
 }
@@ -17,6 +33,10 @@ body{
 .nav-link{
     color: goldenrod !important;
     height: 2rem;
+}
+
+.nav-link:hover{
+    color: white !important;
 }
 
 .f-info-links,.f-info-socials,.f-info-brand{
@@ -95,7 +115,7 @@ body{
 
 .card-img-overlay:hover{
     opacity: 0.15;
-    background-color: goldenrod;
+    background-color: white;
 }
 
 .bcol{
@@ -114,4 +134,30 @@ body{
 
 .btns{
     display: flex;
+}
+
+.error{
+    display: flex;
+    justify-content: center;
+}
+
+.review{
+    background-color: #222222 !important;
+    color: darkgoldenrod !important;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center !important;
+    margin-left: 25% !important;
+    width: 50% !important;
+    height: 50% !important;
+    align-items: start !important;
+}
+
+.btnforreview{
+    background-color: darkgoldenrod !important;
+    color: #222222 !important;
+}
+
+.btnforreview:hover{
+    opacity: 0.8;
 }

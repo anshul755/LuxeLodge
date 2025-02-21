@@ -1,9 +1,13 @@
 <%layout("/layout/boilerplate")%>
 <body>
-    <h1 style="color: #222222;">&nbsp;<i>All Listings</i></h1>
+    <br>
+      <p class="typewriter" style="font-style: italic; font-weight: bold; justify-content: center; display: flex;"></p>
+    <br>
+    <h3 style="color: #222222;">&nbsp;<i>All Listings</i></h3>
+    <br>
     <div class="row row-cols-lg-3 row-cols-mid-2 row-cols-sm-1">
         <%for(let list of all_listing){%>
-            <a href="/listings/<%=list._id%>/edit" class="listing-link">
+            <a href="/listings/<%=list._id%>" class="listing-link">
             <div class="card">
             <img src="<%=list.image%>" class="card-img-top showImg" alt="listing_Img" style="height: 20rem;">
             <div class="card-img-overlay"></div>
