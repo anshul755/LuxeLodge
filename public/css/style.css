@@ -84,6 +84,11 @@ body{
     margin-bottom: 2rem;
 }
 
+.card1{
+    border:1px solid #dee2e6!important;
+    border-radius: 0.375rem !important;
+}
+
 .card-img-top{
     border-radius: 1rem !important;
     width: 100% !important;
@@ -161,3 +166,65 @@ body{
 .btnforreview:hover{
     opacity: 0.8;
 }
+
+/* .listing-card {
+    border: none !important;
+    border-radius: 15px !important;
+    overflow: hidden !important;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out !important;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important;
+    position: relative !important;
+}
+
+.listing-card:hover {
+    transform: scale(1.05) rotateX(5deg) rotateY(5deg) !important;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+.listing-card .card-img-top {
+    height: 20rem !important;
+    object-fit: cover !important;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+    transition: transform 0.4s ease-in-out !important;
+}
+
+.listing-card:hover .card-img-top {
+    transform: scale(1.1) !important;
+}
+
+.listing-card .card-body {
+    background: rgba(0, 0, 0, 0.6) !important;
+    color: white !important;
+    text-align: center !important;
+    padding: 10px !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    border-bottom-left-radius: 15px !important;
+    border-bottom-right-radius: 15px !important;
+}
+
+.listing-card .card-text b {
+    font-size: 1.3rem !important;
+    font-weight: bold !important;
+    font-family: 'Poppins', sans-serif !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+.listing-card .card-text i {
+    font-size: 1.1rem !important;
+    opacity: 0.9 !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.listing-card .card-body {
+    opacity: 0 !important;
+    transform: translateY(10px) !important;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out !important;
+}
+
+.listing-card:hover .card-body {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+} */

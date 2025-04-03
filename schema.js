@@ -9,4 +9,11 @@ module.exports.listingschema=Joi.object({
         location:Joi.string().required(),
         country:Joi.string().required(),
     }).required(),
-})
+});
+
+module.exports.reviewschema=Joi.object({
+    review:Joi.object({
+        rating:Joi.number().required().min(1).max(5).allow('').default(3),
+        comment:Joi.string().required(),
+    }).required(),
+});

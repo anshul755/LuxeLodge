@@ -3,7 +3,7 @@
     <br>
     <h1><i><b><%= listings.title %></b></i></h1>
     <div style="align-items: center;">
-        <div class="card">
+        <div class="cards">
             <img src="<%=listings.image%>" class="card-img-top" alt="listing_Img" style="height: 40rem; width: 10rem;">
         </div>
     </div>
@@ -15,37 +15,54 @@
     </ul><br>
 
     <div class="btns">
-        <a href="/listings/<%=listings.id%>/edit" style="text-decoration: none;" class="btn bcol"><b>Edit</b></a>&nbsp;&nbsp;
+        <a href="/listings/<%=listings.id%>/edit" style="text-decoration: none;" class="btn bcol"><b><i>Edit</i></b></a>&nbsp;&nbsp;
         <form action="/listings/<%=listings._id%>?_method=delete" method="post">
-            <button class="btn bcol"><b>Delete</b></button>
+            <button class="btn bcol"><b><i>Delete</i></b></button>
     </div>
     </form>
 </div>
-<br><br>
+<br><hr><br>
 <div>
     <h4 style="text-align: center;"><i>Leave a Review</i></h4>
-    <form action="" class="form-control review">
-        <div><br>
-            <label for="rating" class="form-label">Rating</label>
-            <br><label id="rating-labels" style="color: darkgoldenrod; font-weight: bold; text-align: center;">
-              &nbsp;<span id="num1">1</span>&nbsp;&nbsp;&nbsp;&nbsp;
-              <span id="num2">2</span>&nbsp;&nbsp;&nbsp;&nbsp;
-              <span id="num3" class="active">3</span>&nbsp;&nbsp;&nbsp;&nbsp;
-              <span id="num4">4</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <form action="http://localhost:8080/listings/<%=listings._id%>/reviews" class="form-control review needs-validation" method="post" novalidate> 
+      <div><br>
+          <label for="rating" class="form-label">Rating</label>
+          <br><label id="rating-labels" style="color: darkgoldenrod; font-weight: bold; text-align: center;">
+              <span id="num1">1</span>
+              <span id="num2">2</span>
+              <span id="num3" class="active">3</span>
+              <span id="num4">4</span>
               <span id="num5">5</span>
-            </label>
-            <input type="range" min="1" max="5" value="3" id="rating" name="Review[rating]" class="form-range" style=" width: 52.5%; appearance: none; height: 10px; border-radius: 10px; outline: none; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
+          </label><br>
+          <input type="range" min="1" max="5" value="3" id="rating" name="review[rating]" class="form-range" style="width: 52.5%; appearance: none; height: 10px; border-radius: 10px; outline: none; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
+      </div>
+      <div>
+          <br>
+          <label for="comment" class="form-label">Comments</label>
+          <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
+      </div>
+      <div><br>
+          <button class="btn btnforreview"><b><i>Submit</i></b></button>
+      </div>
+      <br>
+  </form>
+    <hr>
+    <div>
+      <h4>&nbsp;&nbsp;&nbsp;All Reviews</h4>
+      <div class="rows col-5 mb-3 ms-3">
+      <% for(review of listings.reviews){%>
+        <div class="card card1">
+          <div class="card-body" style="margin-left: 10px;">
+            <p class="card-text"><%=review.comment%>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            <p class="card-text"><%=review.rating%>&#9733;</p>
+            <form style="margin-bottom: 5px; margin-right: 5px;display: flex; justify-content: flex-end;" method="post" action="/listings/<%=listings._id%>/reviews/<%=review._id%>?_method=delete">
+              <button class="btn bcol"><b><i>Delete</i></b></button>
+            </form>
           </div>
-        <div>
-            <br>
-            <label for="comment" class="form-label">Comments</label>
-            <textarea name="Review[comment]" id="comment" cols="30" rows="5" class="form-control"></textarea>
         </div>
-        <div><br>
-            <button class="btn btnforreview">Submit</button>
-        </div>
-        <br>
-    </form>
+        <%}%>
+      </div>
+    </div>
 </div>
 <script>
     const slider = document.getElementById('rating');
