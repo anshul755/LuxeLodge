@@ -1,4 +1,5 @@
 const mongoose=require('mongoose');
+const { ref } = require('process');
 
 const Schema=mongoose.Schema;
 
@@ -13,6 +14,13 @@ const review=new Schema({
         type:Date,
         default:Date.now(),
     },
+    username:{
+        type:String,
+    },
+    createdBy:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    }
 });
 
 module.exports=mongoose.model("Review",review);

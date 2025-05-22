@@ -1,28 +1,38 @@
 <%layout("/layout/boilerplate")%>
 <body>
     <br>
+    <%if(success && success.length!=0){%>
+      <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+        <%=success%>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <br>
+      </div>
+    <%}%>
     <h1><i><b><%= listings.title %></b></i></h1>
     <div style="align-items: center;">
         <div class="cards">
             <img src="<%=listings.image%>" class="card-img-top" alt="listing_Img" style="height: 40rem; width: 10rem;">
         </div>
     </div>
+    <p>&nbsp;&nbsp;<b>Owned By:</b> <u><b><%= listings.owner.username %></b></u></p><br>
     <ul>
         <li><%= listings.description %></li>
         <li>&#8377; <%= listings.price.toLocaleString("en-IN") %></li>
         <li><%= listings.location %></li>
         <li><%= listings.country %></li>
     </ul><br>
-
-    <div class="btns">
+      <%if(user && listings.owner._id.toString() === user._id.toString()){%>
+      <div class="btns">
         <a href="/listings/<%=listings.id%>/edit" style="text-decoration: none;" class="btn bcol"><b><i>Edit</i></b></a>&nbsp;&nbsp;
         <form action="/listings/<%=listings._id%>?_method=delete" method="post">
             <button class="btn bcol"><b><i>Delete</i></b></button>
+        </form>
+      </div>
+      <%}%>
     </div>
-    </form>
-</div>
 <br><hr><br>
 <div>
+  <%if(user){%>
     <h4 style="text-align: center;"><i>Leave a Review</i></h4>
     <form action="http://localhost:8080/listings/<%=listings._id%>/reviews" class="form-control review needs-validation" method="post" novalidate> 
       <div><br>
@@ -46,6 +56,7 @@
       </div>
       <br>
   </form>
+  <%}%>
     <hr>
     <div>
       <h4>&nbsp;&nbsp;&nbsp;All Reviews</h4>
@@ -55,9 +66,12 @@
           <div class="card-body" style="margin-left: 10px;">
             <p class="card-text"><%=review.comment%>&nbsp;&nbsp;&nbsp;&nbsp;</p>
             <p class="card-text"><%=review.rating%>&#9733;</p>
+            <p class="card-text">- <b><%=review.username%></b></p>
+            <% if (user && review.createdBy.toString() === user._id.toString()) { %>
             <form style="margin-bottom: 5px; margin-right: 5px;display: flex; justify-content: flex-end;" method="post" action="/listings/<%=listings._id%>/reviews/<%=review._id%>?_method=delete">
               <button class="btn bcol"><b><i>Delete</i></b></button>
             </form>
+            <%}%>
           </div>
         </div>
         <%}%>
