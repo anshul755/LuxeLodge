@@ -1,33 +1,58 @@
 <% layout("/layout/boilerplate") %>
-<body>
-  <br>
-  <% if (success && success.length != 0) { %>
-    <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-      <%= success %>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<body class="bg-light">
+
+  <!-- Search Bar -->
+  <div class="container py-4">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+        <form action="/listings" method="GET" class="input-group shadow-sm">
+          <input
+            type="text"
+            name="q"
+            class="form-control rounded-start"
+            placeholder="Search here"
+            value="<%= typeof q !== 'undefined' ? q : '' %>"
+          />
+          <button class="btn bcol rounded-end" type="submit">Search</button>
+        </form>
+      </div>
     </div>
-  <% } %>
-  <% if (error && error.length != 0) { %>
-    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-      <%= error %>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  <% } %>
-  <br>
-  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-    <% for (let list of all_listing) { %>
-      <a href="/listings/<%= list._id %>" class="listing-link">
-        <div class="card listing-card">
-          <img src="<%= list.image %>" class="card-img-top showImg" alt="listing_Img">
-          <div class="card-img-overlay"></div>
-          <div class="card-body">
-            <p class="card-text">
-              <b><i><%= list.title %></i></b><br>
-              ₹<i><%= Number(list.price).toLocaleString("en-IN") %>/night</i>
-            </p>
-          </div>
-        </div>
-      </a>
+  </div>
+
+  <!-- Flash Messages -->
+  <div class="container">
+    <% if (success && success.length != 0) { %>
+      <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+        <%= success %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% } %>
+    <% if (error && error.length != 0) { %>
+      <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+        <%= error %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
     <% } %>
   </div>
+
+  <!-- Listings Grid -->
+  <div class="container pb-5">
+    <div class="row g-4">
+      <% for (let list of all_listing) { %>
+        <div class="col-12 col-sm-6 col-md-4">
+          <a href="/listings/<%= list._id %>" class="text-decoration-none text-dark">
+            <div class="card listing-card shadow-sm border-0 h-100 rounded-4">
+              <div class="overlay"></div>
+              <img src="<%= list.image.url %>" class="card-img-top" style="height: 220px; object-fit: cover;" alt="listing_Img">
+              <div class="card-body p-3">
+                <h6 class="fw-bold text-truncate mb-1"><%= list.title %></h6>
+                <p class="text-muted mb-0 small">₹<%= Number(list.price).toLocaleString("en-IN") %> / night</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
 </body>

@@ -1,9 +1,9 @@
 <%layout("/layout/boilerplate")%>
 <body>
     <br>
-    <h3><i>Create a New Listing</i></h3>
+    <h3><i>Add Details Of Lodge</i></h3>
     <br>
-    <form action="/listings" method="post" class="needs-validation" novalidate>
+    <form action="/listings" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
         <div>
             <label for="title" class="form-label" id="validationCustom01">Title:</label>
             <input  name="listing[title]" placeholder="Enter Title" type="text" class="form-control" id="validationCustom01" required>
@@ -27,13 +27,13 @@
         </div>
         <br>
         <div>
-            <label for="Image" class="form-label" id="validationCustom03">Image URL:</label>
-            <input  name="listing[image]" placeholder="Enter Image URL" type="text" class="form-control" id="validationCustom03" required>
+            <label for="Image" class="form-label" id="validationCustom03">Upload Image:</label>
+            <input  name="listing[image]" placeholder="Upload Image" type="file" class="form-control" id="validationCustom03" required>
             <div class="valid-feedback">
                 Looks good!
               </div>
               <div class="invalid-feedback">
-                Please Paste The Url.
+                Please Upload The Image.
               </div>
         </div>
         <br>

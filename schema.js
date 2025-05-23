@@ -4,7 +4,10 @@ module.exports.listingschema=Joi.object({
     listing:Joi.object({
         title:Joi.string().required(),
         description:Joi.string().required(),
-        image:Joi.string().required(),
+        image:Joi.object({
+            url: Joi.string().required(),
+            filename: Joi.string().required()
+        }).optional(),
         price:Joi.number().required(),
         location:Joi.string().required(),
         country:Joi.string().required(),
