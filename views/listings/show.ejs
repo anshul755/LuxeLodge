@@ -88,12 +88,6 @@
     <%}%>
     <h4 style="text-align:left;">Where You'll Be</h4>
 <div id="map" style="height: 400px; width: 100%; margin: 1rem auto;"></div>
-<script
-  src="https://maps.googleapis.com/maps/api/js?key=<%= googleMapsKey %>&callback=initMap"
-  async
-  defer>
-</script>
-
   <script>
     function initMap() {
       const address = "<%= listings.location.replace(/\"/g,'\\\"') %>, <%= listings.country.replace(/\"/g,'\\\"') %>";
@@ -126,4 +120,10 @@
 
     window.initMap = initMap;
   </script>
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=<%= googleMapsKey %>&callback=initMap"
+      async
+      defer>
+    </script>
 </body>
