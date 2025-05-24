@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-md navbar-custom sticky-top px-3">
       <div class="container-fluid">
 
-        <a class="navbar-brand text-warning fw-bold" href="/listings">LuxeLodge</a>
+        <a class="navbar-brand text-warning fw-bold" href="/">LuxeLodge</a>
 
         <button
           class="navbar-toggler d-md-none border-0"
@@ -40,10 +40,10 @@
           </ul>
           <ul class="navbar-nav ms-3 align-items-center">
             <%if(!user){%>
-            <li class="nav-item">
+            <li class="nav-item btn">
               <a class="nav-link" href="/signup">Sign Up</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item btn">
               <a class="nav-link" href="/login">Login</a>
             </li>
             <%}%>
@@ -62,9 +62,9 @@
       tabindex="-1"
       id="mobileMenu"
       aria-labelledby="mobileMenuLabel"
-      style="background-color: #222222;"
+      style="background-color: black;"
     >
-      <div class="offcanvas-header" style="background-color: #222222;">
+      <div class="offcanvas-header" style="background-color: black;">
         <h5 class="offcanvas-title text-warning" id="mobileMenuLabel">Menu</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
       </div>

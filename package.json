@@ -1,5 +1,5 @@
 {
-  "engines":{
+  "engines": {
     "node": "20.18.0"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
     "flash": "^1.1.0",
     "joi": "^17.13.3",
     "method-override": "^3.0.0",
+    "mongodb": "^6.16.0",
     "mongoose": "^8.10.0",
     "multer": "^2.0.0",
     "multer-storage-cloudinary": "^4.0.0",

@@ -27,7 +27,7 @@ body {
 }
 
 .navbar {
-    background-color: #222222 !important;
+    background-color: black !important;
     height: 5rem;
 }
 
@@ -72,7 +72,7 @@ body {
 .f-info {
     color: darkgoldenrod;
     height: 8rem;
-    background-color: #222222;
+    background-color: black;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -106,7 +106,7 @@ body {
 
 @media (max-width:991px) {
     .container-fluid {
-        background-color: #222222 !important;
+        background-color: black !important;
         color: darkgoldenrod;
     }
 
@@ -169,7 +169,7 @@ a:active {
 
 .bcol {
     color: darkgoldenrod !important;
-    background-color: #222222 !important;
+    background-color: black !important;
 }
 
 .bcol:hover {
@@ -191,7 +191,7 @@ a:active {
 }
 
 .review {
-    background-color: #222222 !important;
+    background-color: black !important;
     color: darkgoldenrod !important;
     display: flex !important;
     flex-direction: column;
@@ -204,7 +204,7 @@ a:active {
 
 .btnforreview {
     background-color: darkgoldenrod !important;
-    color: #222222 !important;
+    color: black !important;
 }
 
 .btnforreview:hover {
@@ -212,9 +212,9 @@ a:active {
 }
 
 .navbar-custom {
-    background-color: #222222;
+    background-color: black;
 }
 
 .offcanvas-custom {
-    background-color: #222222;
+    background-color: black;
 }
