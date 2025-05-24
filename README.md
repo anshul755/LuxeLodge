@@ -12,26 +12,29 @@ Experience LuxeLodge in action: 🔗[LuxeLodge](https://luxelodge.onrender.com/)
 
 ### 📁 Clone the Repository
 
+```
 bash
 git clone https://github.com/anshul755/LuxeLodge.git
 cd LuxeLodge
-
+```
 
 ---
 
 ### 📦 Install Dependencies
 
+```
 bash
 npm install
-
+```
 
 ---
 
 ### ⚙ Set Up Environment Variables
 
+```
 bash
 cp .env.example .env
-
+```
 
 Update the .env file with your MongoDB and Cloudinary credentials:
 
@@ -48,9 +51,10 @@ SESSION_SECRET=your_session_secret
 
 ### 🚀 Start the Application
 
+```
 bash
 node app.js
-
+```
 
 The app will start on: [http://localhost:3000](http://localhost:3000)
 
