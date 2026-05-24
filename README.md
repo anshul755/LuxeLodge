@@ -1,121 +1,161 @@
-# 🏨 LuxeLodge
+# LuxeLodge
 
+Experience LuxeLodge in action: [LuxeLodge](https://luxelodge.onrender.com/)
 
-Experience LuxeLodge in action: 🔗[LuxeLodge](https://luxelodge.onrender.com/)
+LuxeLodge is a full-stack stay discovery app inspired by modern vacation rental platforms. The project has been updated from a server-rendered EJS application into a client/server architecture with a React + Vite frontend and an Express + MongoDB backend. It now supports authenticated listing management, review workflows, image uploads, and seeded travel data.
 
+## Quickstart Guide
 
-**LuxeLodge** is a modern, full-stack lodge management system built with Node.js, Express, and MongoDB. Designed with scalability and user experience in mind, LuxeLodge enables seamless room booking, user authentication, and media management through an elegant and intuitive interface.
-
----
-
-## 🚀 Quickstart Guide
-
-### 📁 Clone the Repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/anshul755/LuxeLodge.git
 cd LuxeLodge
 ```
 
----
-
-### 📦 Install Dependencies
+### Install dependencies
 
 ```bash
-npm install
+npm run install:all
 ```
 
----
+### Set up environment variables
 
-### ⚙️ Set Up Environment Variables
-
-```bash
-cp .env.example .env
-```
-
-Update the `.env` file with your MongoDB and Cloudinary credentials:
+Create a `.env` file at the project root and add the backend and Cloudinary values:
 
 ```env
-PORT=3000
-MONGODB_URI=your_mongodb_connection_string
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
-SESSION_SECRET=your_session_secret
+mongo_url=your-mongodb-connection-string
+Secret=your-session-secret
+Cloud_name=your-cloudinary-cloud-name
+Cloud_api_key=your-cloudinary-api-key
+Cloud_api_secret=your-cloudinary-api-secret
+CLIENT_ORIGIN=http://localhost:5173
+VITE_API_URL=
+PORT=8080
 ```
 
----
+If `VITE_API_URL` is omitted, the frontend uses `/api` by default.
 
-### 🚀 Start the Application
+### Start the application in development
+
+Run the backend API in one terminal:
 
 ```bash
+npm run dev:backend
+```
+
+Run the frontend in another terminal:
+
+```bash
+npm run dev:frontend
+```
+
+The Vite server runs on `http://localhost:5173` and proxies `/api` requests to `http://localhost:8080`.
+
+### Build for production
+
+```bash
+npm run build
 npm start
 ```
 
-The app will start on: [http://localhost:3000](http://localhost:3000)
+After the frontend is built, the backend serves `frontend/dist` for non-API routes.
 
----
+## Features
 
-## 🛠 Features
+- Curated landing page with a polished hero section, quick filters, and key stats.
+- Searchable listings grid with query support and responsive card layout.
+- Listing detail pages with full descriptions, price display, host info, location map, and review threads.
+- Auth flow with sign up, log in, log out, and current-user session detection.
+- Create, edit, and delete listings with image upload support through Cloudinary.
+- Add and remove reviews on individual listings.
+- Owner-only actions for editing and deleting a listing.
+- Privacy and terms pages for basic legal navigation.
+- Production mode that serves the built frontend from the backend server.
 
-- 🔐 Secure user authentication with Passport.js  
-- 🛏 Dynamic room listings with image uploads via Cloudinary  
-- 📅 Booking system with admin control panel  
-- 🧾 EJS templated views for a smooth, server-rendered experience  
-- ⚙️ Environment-based configuration and robust error handling  
+## Tech Stack
 
----
+- Frontend: React, Vite, Tailwind CSS, OGL.
+- Backend: Node.js, Express, MongoDB, Mongoose, Passport, express-session.
+- Media storage: Cloudinary via multer-storage-cloudinary.
+- Validation: Joi.
 
-## 🧬 Tech Stack
+## Project Structure
 
-- **Backend**: Node.js, Express.js  
-- **Database**: MongoDB, Mongoose  
-- **Templating**: EJS  
-- **Cloud Services**: Cloudinary  
-- **Authentication**: Passport.js  
-- **Styling**: Bootstrap & Custom CSS  
-
----
-
-## 📁 Project Structure
-
-```
+```text
 LuxeLodge/
-│
-├── controllers/       # Logic for handling routes
-├── models/            # Mongoose data models
-├── routes/            # Express route handlers
-├── views/             # EJS templates
-├── public/            # Static assets (CSS, JS, images)
-├── utils/             # Utility functions
-├── app.js             # Main server file
-├── middleware.js      # Custom middleware
-├── cloudConfig.js     # Cloudinary configuration
-└── .env.example       # Example environment variables
+├── frontend/        React application built with Vite
+├── backend/         Express API, auth, models, Cloudinary upload handling, seed scripts
+├── package.json     Root orchestrator scripts for the two apps
+└── README.md        Project documentation
 ```
 
----
+## API Overview
 
-## 🔮 Future Improvements
+### Health Check
 
-Planned enhancements to elevate LuxeLodge even further:
+- `GET /api/health`
 
-- 🔗 **OAuth Integration** – Google, GitHub, and Facebook login support  
-- 🎨 **UI Improvements** – Responsive design and animated transitions (React/Vue optional frontend)  
-- 🔍 **Filter-Based Search** – Sort and filter by price, location, amenities, and availability  
-- 🧾 **Booking History** – Personalized user dashboard with booking records  
-- 🔔 **Email Notifications** – Confirmation emails and booking reminders  
-- 🛡️ **Advanced Security** – Rate limiting, XSS protection, and input sanitization  
-- 🌐 **Multi-language Support** – i18n for international users  
-- 📱 **PWA Support** – Installable as a Progressive Web App  
+### Listings
 
----
+- `GET /api/listings`
+- `GET /api/listings/:id`
+- `POST /api/listings`
+- `PUT /api/listings/:id`
+- `DELETE /api/listings/:id`
 
-## 🤝 Contributors
+The listings index supports search with `q`, and the data layer also supports paging and location-based sorting.
+
+### Reviews
+
+- `POST /api/listings/:id/reviews`
+- `DELETE /api/listings/:id/reviews/:reviewId`
+
+### Auth
+
+- `GET /api/auth/me`
+- `POST /api/auth/signup`
+- `POST /api/auth/login`
+- `POST /api/auth/logout`
+
+## Seed Data
+
+The repo includes Airbnb CSV data under `backend/data/airbnb/raw/`. The seeder reads `listings.csv` and `reviews.csv`, creates host users, and generates review records linked to the imported listings.
+
+Run the importer from the repository root:
+
+```bash
+npm run seed:airbnb
+```
+
+You can limit the import size with environment variables:
+
+```bash
+SEED_LISTING_LIMIT=500 SEED_REVIEWS_PER_LISTING=5 npm run seed:airbnb
+```
+
+## Notes
+
+- Listing creation and editing require authentication.
+- Images are uploaded to Cloudinary and stored with each listing.
+- Reviews are tied to a specific listing and can be removed by their author.
+- The frontend keeps session state by calling `/api/auth/me` on load and sends credentials with every API request.
+
+## Future Improvements
+
+Planned enhancements for the next iterations:
+
+- More advanced filters for price, location, and amenities.
+- Better booking and reservation workflows.
+- Notifications and saved listings.
+- Admin or host dashboards for managing inventory.
+- Incremental service extraction if the backend grows beyond a modular monolith.
+
+## Contributors
 
 Made with passion by:
 
-- [Anshul Patel](https://github.com/anshul755)  
+- [Anshul Patel](https://github.com/anshul755)
 - [Jainil Patel](https://github.com/JainilPatel2502)
 
-> Contributions are always welcome! Feel free to fork the repo and submit a PR for improvements or bug fixes.
+Contributions are welcome. Feel free to fork the repo and submit a PR for improvements or bug fixes.
